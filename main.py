@@ -12,11 +12,12 @@ from discord import client
 
 client = discord.Client()
 
+
 # Startup Information
 @client.event
 async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='poop in the toilet'))
-    
+
     print('Connected to bot: {}'.format(client.user.name))
     print('Bot ID: {}'.format(client.user.id))
 
@@ -27,7 +28,7 @@ balls_lmao_reply = [
   "balls"
 ]
 
-intercourse_cmd = ["*intercourse"]
+intercourse_cmd = ["intercourse"]
 
 intercourse_reply = [
   "no",
@@ -58,20 +59,24 @@ async def on_message(message):
   if message.content.startswith('i love kastless'):
     await message.channel.send('shut up')
 
-  if message.content.startswith('*poop'):
+  if message.content.startswith('poop'):
     await message.channel.send('poop') 
 
   if message.content.startswith('*help'):
-    await message.channel.send('commands: *help: shows commands - *poop: says poop - *beatbox: sends thanos beatbox gif')
-  
-  if message.content.startswith('*beatbox'):
-    await message.channel.send('https://c.tenor.com/mjQ2uj8QuJQAAAAd/thanos-beatbox.gif')
-  
+    await message.channel.send('commands: *help: shows commands - *poop: says poop - beatbox: sends thanos beatbox gif - intercourse: no - god: whatr?')
+
+  if message.content.startswith('beatbox'):
+    await message.channel.send('https://c.tenor.com/mjQ2uj8QuJQAAAAd/thanos-beatbox.gif%27')
+
+  if message.content.startswith('*god'):
+    await message.channel.send ('https://i.imgur.com/pUUlekN.mp47')
+ 
   if any(word in msg for word in balls_lmao):
     await message.channel.send(random.choice(balls_lmao_reply))
-
-
+ 
+  if any(word in msg for word in intercourse_cmd):
+    await message.channel.send(random.choice(intercourse_reply))
 
 keep_alive()
-#.env not public because it has the bot token :troll:
+#.env isn't public because it has the token :troll:
 client.run(os.environ['TOKEN'])
