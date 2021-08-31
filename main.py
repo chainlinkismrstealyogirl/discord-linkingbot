@@ -73,5 +73,5 @@ async def on_message(message):
 
 
 keep_alive()
-#.env not publiv because it has the bot token :troll:
+#.env not public because it has the bot token :troll:
 client.run(os.environ['TOKEN'])
